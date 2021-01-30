@@ -11,4 +11,13 @@ describe("ToggleNav", () => {
         expect(input.checked).toBe(true)
     })
 
+    test('Should call toggle on checked', () => {
+        const handleToggle = jest.fn();
+        render(<ToggleNav active={true} toggle={handleToggle}/>)
+
+        const input = screen.getByTestId('toggle-nav-input')
+        input.click()
+        expect(handleToggle).toBeCalled()
+    })
+
 })

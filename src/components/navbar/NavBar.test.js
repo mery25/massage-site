@@ -30,4 +30,17 @@ describe("NavBar", () => {
 
 
     })
+
+    test('Should have logo link', () => {
+        render(
+            <MemoryRouter>
+                <NavBar />
+            </MemoryRouter>);
+
+        expect(screen
+            .getByAltText('Logo')
+            .closest('a'))
+            .toHaveAttribute('href', "/home")
+
+    })
 })

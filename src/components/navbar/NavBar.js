@@ -8,7 +8,7 @@ const NavBar = () => {
             <NavLink className="navbar__logo" exact to="/home">
                 <img alt="Logo" />
             </NavLink>
-            <nav>
+            <nav className="navbar__nav">
                 <NavLink className="navbar__link" exact to="/home">Inicio</NavLink>
                 <NavLink className="navbar__link" exact to="/aboutme">Sobre mi</NavLink>
                 <NavLink className="navbar__link" exact to="/massages">Masajes</NavLink>

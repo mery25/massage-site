@@ -1,7 +1,7 @@
 import React from "react"
 import "./ToggleNav.sass"
 
-function ToggleNav({ active}) {
+function ToggleNav({ active, toggle}) {
     return (
         <label className="toggle-nav" >
             <span></span>
@@ -10,7 +10,7 @@ function ToggleNav({ active}) {
                 type="checkbox"
                 checked={active}
                 id="toggle-nav__input"
-                onChange={() => {}}
+                onChange={() => toggle()}
             />
         </label>
     )

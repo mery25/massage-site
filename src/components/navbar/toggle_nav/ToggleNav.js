@@ -3,7 +3,7 @@ import "./ToggleNav.sass"
 
 function ToggleNav({ active, toggle}) {
     return (
-        <label className="toggle-nav" >
+        <label className={active ? "toggle-nav checked" : "toggle-nav"}>
             <span></span>
             <input 
                 data-testid="toggle-nav-input"

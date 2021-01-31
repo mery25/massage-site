@@ -1,14 +1,20 @@
-import React from "react"
+import React, {useState} from "react"
 import { NavLink } from 'react-router-dom'
+import ToggleNav from './toggle_nav/ToggleNav'
 import "./NavBar.sass"
 
 const NavBar = () => {
+
+    const [ isNavBarCollapsed, setIsNavBarCollapsed ] = useState(true);
+
+    const toggleNavbar = () => setIsNavBarCollapsed( isNavBarCollapsed => !isNavBarCollapsed )
+
     return (
         <div className="navbar">
             <NavLink className="navbar__logo" exact to="/home">
                 <img alt="Logo" />
             </NavLink>
-            <nav className="navbar__nav">
+            <nav data-testid="navbar-nav" className={ isNavBarCollapsed ? " navbar__nav collapsed" : "navbar__nav" }>
                 <NavLink className="navbar__link" exact to="/home">Inicio</NavLink>
                 <NavLink className="navbar__link" exact to="/aboutme">Sobre mi</NavLink>
                 <NavLink className="navbar__link" exact to="/massages">Masajes</NavLink>
@@ -16,6 +22,7 @@ const NavBar = () => {
                 <NavLink className="navbar__link" exact to="/offer">Oferta</NavLink>
                 <NavLink className="navbar__link" exact to="/contact">Contacto</NavLink>
             </nav>
+            <ToggleNav active={!isNavBarCollapsed} toggle={toggleNavbar}/>
         </div>
     )
 }

@@ -43,4 +43,25 @@ describe("NavBar", () => {
             .toHaveAttribute('href', "/home")
 
     })
+
+    test('Should collapse navbar', () => {
+        render(
+            <MemoryRouter>
+                <NavBar/>
+            </MemoryRouter>);
+
+        const input = screen.getByTestId('toggle-nav-input')
+        const nav = screen.getByTestId('navbar-nav')
+
+        // Toggle checkbox
+        input.click()
+        // Nav should not have collapsed class (by default is collapsed)
+        expect(nav.classList.contains('collapsed')).toBe(false)
+
+       // Toggle checkbox
+       input.click()
+       // Nav should have collapsed class
+       expect(nav.classList.contains('collapsed')).toBe(true)
+
+    })
 })

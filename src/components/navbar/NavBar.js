@@ -11,10 +11,14 @@ const NavBar = () => {
 
     return (
         <div className="navbar">
+            <ToggleNav 
+                active={!isNavBarCollapsed} 
+                toggle={toggleNavbar}
+            />
             <NavLink className="navbar__logo" exact to="/home">
                 <img alt="Logo" />
             </NavLink>
-            <nav data-testid="navbar-nav" className={ isNavBarCollapsed ? " navbar__nav collapsed" : "navbar__nav" }>
+            <nav data-testid="navbar-nav" className={ isNavBarCollapsed ? " navbar__nav--collapsed" : "navbar__nav" }>
                 <NavLink className="navbar__link" exact to="/home">Inicio</NavLink>
                 <NavLink className="navbar__link" exact to="/aboutme">Sobre mi</NavLink>
                 <NavLink className="navbar__link" exact to="/massages">Masajes</NavLink>
@@ -22,7 +26,6 @@ const NavBar = () => {
                 <NavLink className="navbar__link" exact to="/offer">Oferta</NavLink>
                 <NavLink className="navbar__link" exact to="/contact">Contacto</NavLink>
             </nav>
-            <ToggleNav active={!isNavBarCollapsed} toggle={toggleNavbar}/>
         </div>
     )
 }

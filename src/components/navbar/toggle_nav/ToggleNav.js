@@ -9,7 +9,7 @@ function ToggleNav({ active, toggle}) {
                 data-testid="toggle-nav-input"
                 type="checkbox"
                 checked={active}
-                id="toggle-nav__input"
+                className="toggle-nav__input"
                 onChange={() => toggle()}
             />
         </label>

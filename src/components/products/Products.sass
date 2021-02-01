@@ -3,22 +3,13 @@
 
     &__title
         text-align: center
-
-.product
-    display: grid
-    grid-template-areas: "name price" "description description" "features features"
-    grid-template-columns: 1fr 3rem
-
-    &__title
-        grid-area: name
     
-    &__price-amount
-        grid-area: price
-        vertical-align: middle
-        text-align: center
-        border: 1px solid black
-        margin: .75rem 0
-        line-height: 2rem
+    &__container
+        display: flex
+        flex-direction: column
+        align-items: center
 
-    &__features
-        grid-area: features
+@media screen and (min-width: 600px)
+    .products__container
+        flex-direction: row
+        align-items: center

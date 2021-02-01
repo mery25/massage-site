@@ -33,18 +33,20 @@ const Products = () => {
             ]
         }
     ]
-    
+
     return (
         <section className="products">
             <h2 className="products__title">Servicios</h2>
-            {
-                products.map(product => 
-                    <Product
-                        title={product.title}
-                        priceAmount={product.priceAmount}
-                        features={product.features}
-                    />)
-            }
+            <div className="products__container">
+                {
+                    products.map(product => 
+                        <Product
+                            title={product.title}
+                            priceAmount={product.priceAmount}
+                            features={product.features}
+                        />)
+                }
+            </div>
         </section>
     )
 }

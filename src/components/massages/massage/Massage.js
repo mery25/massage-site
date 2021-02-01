@@ -10,7 +10,7 @@ const Massage = ({title, image, description, features}) => {
         <p className="massage__description">{description}</p>
         <ul className="massage__features">
             {
-                features.map( feature => <li>{feature}</li>)
+                features.map( (feature, idx) => <li key={idx}>{feature}</li>)
             }
         </ul>
     </div>

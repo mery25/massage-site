@@ -1,0 +1,21 @@
+.product
+    display: grid
+    grid-template-areas: "name price" "description description" "features features"
+    grid-template-columns: 1fr 3rem
+    margin-bottom: 1rem
+    margin-left: 1.5rem
+    margin-right: 1.5rem
+
+    &__title
+        grid-area: name
+    
+    &__price-amount
+        grid-area: price
+        vertical-align: middle
+        text-align: center
+        border: 1px solid black
+        line-height: 2.5rem
+        max-height: 2.5rem
+
+    &__features
+        grid-area: features

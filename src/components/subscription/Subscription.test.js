@@ -27,4 +27,25 @@ describe("Subscription", () => {
         expect(emailInput.value).toBe('m@gmail.com')
         
     })
+
+    test('Should call submit on click submit button', () => {
+        const mockedOnSubscribe = jest.fn()
+        render(<Subscription subscribeEmail={mockedOnSubscribe} />);
+    
+        const emailInput = screen
+            .getByPlaceholderText('Escribe tu email')
+            .closest('input')
+
+        fireEvent.change(emailInput, {
+            target: { value: 'm@gmail.com' }
+        })
+    
+        const submitInput = screen
+            .getByAltText('Enviar')
+            .closest('input')
+        fireEvent.click(submitInput)
+
+        expect(mockedOnSubscribe).toBeCalledWith('m@gmail.com')
+        
+    })
 })

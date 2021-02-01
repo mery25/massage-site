@@ -30,7 +30,10 @@ describe("Subscription", () => {
 
     test('Should call submit on click submit button', () => {
         const mockedOnSubscribe = jest.fn()
-        render(<Subscription subscribeEmail={mockedOnSubscribe} />);
+        render(<Subscription 
+            subscribeEmail={mockedOnSubscribe} 
+            validateEmail={jest.fn()} 
+        />);
     
         const emailInput = screen
             .getByPlaceholderText('Escribe tu email')
@@ -48,4 +51,32 @@ describe("Subscription", () => {
         expect(mockedOnSubscribe).toBeCalledWith('m@gmail.com')
         
     })
+
+    test('Should add error when email validation fails', () => {
+        const mockedValidateEmail = jest.fn()
+        mockedValidateEmail.mockImplementation(() => {
+            throw new Error("Validation fails");
+        });
+        render(<Subscription validateEmail={mockedValidateEmail} />);
+    
+        const emailInput = screen
+            .getByPlaceholderText('Escribe tu email')
+            .closest('input')
+        fireEvent.change(emailInput, {
+            target: { value: 'm@gmail.com' }
+        })
+    
+        expect(screen.queryByText("Validation fails"))
+        .not.toBeInTheDocument()
+
+        const submitInput = screen
+            .getByAltText('Enviar')
+            .closest('input')
+        fireEvent.click(submitInput)
+
+        expect(screen.getByText("Validation fails"))
+            .toBeInTheDocument()
+        
+    })
+
 })

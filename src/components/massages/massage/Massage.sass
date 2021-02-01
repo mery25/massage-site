@@ -1,4 +1,25 @@
 .massage
-    padding: .5rem
-    height: 100%
     width: 100%
+    display: grid
+    grid-template-areas: "title" "photo" "description" "features"
+    grid-column-gap: 2rem
+
+    &__name
+        grid-area: title
+        text-align: center
+
+    &__image
+        grid-area: photo
+
+    &__description
+        grid-area: description
+
+    &__features
+        grid-area: features
+
+
+@media screen and (min-width: 600px)
+    .massage
+        grid-template-areas: ". title title ." ". photo description ." ". photo features ."
+        grid-template-columns: .5rem 1fr 1fr .5rem
+        grid-template-rows: auto

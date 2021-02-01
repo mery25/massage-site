@@ -2,6 +2,7 @@ import './App.sass';
 import NavBar from "./navbar/NavBar"
 import AboutMe from "./aboutme/AboutMe"
 import Massages from "./massages/Massages"
+import Offers from "./offers/Offers"
 
 function App() {
   return (
@@ -10,9 +11,10 @@ function App() {
       <main>
         <AboutMe />
         <Massages />
+        <Offers />
       </main>
     </div>
   );
 }
 
-export default App;
+export default App

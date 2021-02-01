@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import Massages from './Massages';
 import React from 'react';
 
-describe("Messages", () => {
+describe("Massages", () => {
 
     test('Should have two tabs', () => {
         render(<Massages />);

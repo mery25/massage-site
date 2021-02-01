@@ -1,25 +1,50 @@
 import React from "react"
 import "./Products.sass"
+import Product from "./product/Product"
 
 const Products = () => {
+
+    const products = [
+        {
+            title: "Masaje Ayurveda",
+            priceAmount: 40,
+            features: [
+                "Lorem ipsum dolor sit amet consectetur adipisicing.",
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+                "Lorem ipsum dolor sit amet."
+            ]
+        },
+        {
+            title: "Masaje Descontracturante Parcial",
+            priceAmount: 20,
+            features: [
+                "Lorem ipsum dolor sit amet consectetur adipisicing.",
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+                "Lorem ipsum dolor sit amet."
+            ]
+        },
+                {
+            title: "Masaje Descontracturante Completo",
+            priceAmount: 30,
+            features: [
+                "Lorem ipsum dolor sit amet consectetur adipisicing.",
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+                "Lorem ipsum dolor sit amet."
+            ]
+        }
+    ]
+    
     return (
         <section className="products">
             <h2 className="products__title">Servicios</h2>
-            <div className="product">
-                <h3 className="product__title">Masaje Ayurveda</h3>
-                <label className="product__price-amount">40€</label>
-                <ul className="product__features">
-                    <li className="product__feature">
-                        Lorem ipsum dolor sit amet consectetur adipisicing.
-                    </li>
-                    <li className="product__feature">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </li>
-                    <li className="product__feature">
-                        Lorem ipsum dolor sit amet.
-                    </li>
-                </ul>
-            </div>
+            {
+                products.map(product => 
+                    <Product
+                        title={product.title}
+                        priceAmount={product.priceAmount}
+                        features={product.features}
+                    />)
+            }
         </section>
     )
 }

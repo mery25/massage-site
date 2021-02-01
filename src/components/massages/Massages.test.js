@@ -15,4 +15,38 @@ describe("Messages", () => {
             .getByText('Descontracturante')
             .closest('button')).toBeInTheDocument()
     })
+
+    test('Should show massage content for the massage tab pressed', () => {
+        render(<Massages />);
+
+        const ayurvedaTab = screen
+            .getByText('Ayurveda')
+            .closest('button')
+
+        ayurvedaTab.click()
+
+        expect(screen
+            .getByText('Masaje ayurveda')
+            .closest('h3')).toBeInTheDocument()
+
+        expect(screen
+            .getByText('Masaje relajante descontracturante')
+            .closest('h3')).not.toBeInTheDocument()
+
+
+        const descontracturanteTab = screen
+            .getByText('Descontracturante')
+            .closest('button')
+
+        descontracturanteTab.click()
+
+        expect(screen
+            .getByText('Masaje relajante descontracturante')
+            .closest('h3')).toBeInTheDocument()
+
+        expect(screen
+            .getByText('Masaje ayurveda')
+            .closest('h3')).not.toBeInTheDocument()
+
+    })
 })

@@ -5,6 +5,10 @@
 /.pnp
 .pnp.js
 
+# style
+*.css
+*.css.map
+
 # testing
 /coverage
 

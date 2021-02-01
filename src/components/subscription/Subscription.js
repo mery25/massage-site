@@ -4,10 +4,18 @@ import "./Subscription.sass"
 const Subscription = ({validateEmail, subscribeEmail}) => {
 
     const [subscriptionEmail, setSubscriptionEmail] = useState("")
+    const [validationError, setValidationError] = useState("")
 
     const onSubmit = (evt) => {
         evt.preventDefault()
-        subscribeEmail(subscriptionEmail)
+
+        try {
+            validateEmail(subscriptionEmail)
+            subscribeEmail(subscriptionEmail)
+        } catch(e) {
+            setValidationError(e.message)
+        }
+        
     }
 
     return (
@@ -21,7 +29,7 @@ const Subscription = ({validateEmail, subscribeEmail}) => {
                     value={subscriptionEmail} 
                     onChange={e => setSubscriptionEmail(e.currentTarget.value)} 
                 />
-                <small></small>
+                <small>{validationError}</small>
                 <input 
                     type="submit" 
                     value="+" 

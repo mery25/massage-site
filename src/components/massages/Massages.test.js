@@ -30,8 +30,7 @@ describe("Messages", () => {
             .closest('h3')).toBeInTheDocument()
 
         expect(screen
-            .getByText('Masaje relajante descontracturante')
-            .closest('h3')).not.toBeInTheDocument()
+            .queryByText('Masaje relajante descontracturante')).toBeNull()
 
 
         const descontracturanteTab = screen
@@ -45,8 +44,7 @@ describe("Messages", () => {
             .closest('h3')).toBeInTheDocument()
 
         expect(screen
-            .getByText('Masaje ayurveda')
-            .closest('h3')).not.toBeInTheDocument()
+            .queryByText('Masaje ayurveda')).toBeNull()
 
     })
 })

@@ -4,6 +4,31 @@ import "./ContactForm.sass"
 
 const ContactForm = () => {
     const [preferedScheduleInputType, setPreferedScheduleInputType] = useState('text')
+    const [values, setValues] = useState({
+        'name': "",
+        'email': "",
+        'phone': "",
+        'preferedDateTime': "",
+        'comment': ""
+    })
+
+    const minDateTime = () => {
+        let tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        tomorrow.setHours(10)
+        tomorrow.setMinutes(0)
+        const dateToString = tomorrow.toISOString().slice(0,16)
+        return dateToString
+    }
+
+    const maxDateTime = () => {
+        let tomorrow = new Date();
+        tomorrow.setUTCFullYear(tomorrow.getUTCFullYear() + 1)
+        tomorrow.setHours(10)
+        tomorrow.setMinutes(0)
+        const dateToString = tomorrow.toISOString().slice(0,16)
+        return dateToString
+    }
 
     const handleFocusDateTime = evt => {
         setPreferedScheduleInputType('datetime-local')
@@ -15,6 +40,18 @@ const ContactForm = () => {
         }
     }
 
+    const handleChange = evt => {
+        const {name, value} = evt.target
+        
+        console.log(`${name} = ${value}`)
+        setValues(values =>  { 
+            return {
+                ...values,
+                [name]: value
+            }
+        })
+    }
+
     return (
         <form className="contact-form" autoComplete="off" noValidate>
             <Input
@@ -23,29 +60,36 @@ const ContactForm = () => {
                 placeholder="Escribe tu nombre"
                 name="name"
                 divClassName="contact-form__name"
+                value={values["name"]}
+                onChange={handleChange}
             />
             <Input
                 id="phone"
                 type="tel"
                 placeholder="Escribe tu telefono"
-                name="Phone"
+                name="phone"
                 divClassName="contact-form__phone"
+                onChange={handleChange}
             />
             <Input
                 id="email"
                 type="email"
                 placeholder="Escribe tu email"
-                name="Email"
+                name="email"
                 divClassName="contact-form__email"
+                onChange={handleChange}
             />
             <Input
-                id="schedule"
+                id="preferedDateTime"
                 type={preferedScheduleInputType}
                 placeholder="Horario preferente"
-                name="schedule"
+                name="preferedDateTime"
                 onFocus={handleFocusDateTime}
                 onBlur={handleOnBlurFocusDateTime}
                 divClassName="contact-form__schedule"
+                onChange={handleChange}
+                min={minDateTime()}
+                max={maxDateTime()}
             />
             <Input
                 id="comment"
@@ -53,6 +97,7 @@ const ContactForm = () => {
                 placeholder="Escribe un comentario"
                 name="comment"
                 divClassName="contact-form__comment"
+                onChange={handleChange}
             />
             <Input
                 type="submit"

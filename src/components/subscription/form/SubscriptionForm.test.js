@@ -1,11 +1,11 @@
 import { render, screen, fireEvent} from '@testing-library/react'
-import Subscription from './Subscription'
+import SubscriptionForm from './SubscriptionForm'
 import React from 'react'
 
-describe("Subscription", () => {
+describe("Subscription Form", () => {
 
     test('Should have an email form', () => {
-        render(<Subscription />);
+        render(<SubscriptionForm />);
 
         expect(screen
             .getByPlaceholderText('Escribe tu email')
@@ -17,7 +17,7 @@ describe("Subscription", () => {
     })
 
     test('Should set email on input when change', () => {
-        render(<Subscription />);
+        render(<SubscriptionForm />);
 
         const emailInput = screen
             .getByPlaceholderText('Escribe tu email')
@@ -32,7 +32,7 @@ describe("Subscription", () => {
         const mockedOnSubscribe = jest.fn()
         mockedOnSubscribe.mockImplementation(() => null)
 
-        render(<Subscription 
+        render(<SubscriptionForm 
             subscribeEmail={mockedOnSubscribe} 
             validateEmail={jest.fn()} 
         />)
@@ -57,7 +57,7 @@ describe("Subscription", () => {
     test('Should add error when email validation fails', () => {
         const mockedValidateEmail = jest.fn()
         mockedValidateEmail.mockImplementation(() => "Please enter a valid email");
-        render(<Subscription validateEmail={mockedValidateEmail} />);
+        render(<SubscriptionForm validateEmail={mockedValidateEmail} />);
     
         const emailInput = screen
             .getByPlaceholderText('Escribe tu email')

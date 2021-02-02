@@ -1,4 +1,5 @@
 import React, {useState} from "react"
+import "./SubscriptionForm.sass"
 
 const SubscriptionForm = ({validateEmail, subscribeEmail}) => {
 
@@ -29,8 +30,8 @@ const SubscriptionForm = ({validateEmail, subscribeEmail}) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}  autoComplete="off" noValidate>
-            <div className="form-group">
+        <form className="subscription-form" onSubmit={handleSubmit}  autoComplete="off" noValidate>
+            <div className="subscription-form__input-group">
                 <input 
                     id="email"
                     type="email" 

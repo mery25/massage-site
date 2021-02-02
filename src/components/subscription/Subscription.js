@@ -6,35 +6,56 @@ const Subscription = ({validateEmail, subscribeEmail}) => {
     const [subscriptionEmail, setSubscriptionEmail] = useState("")
     const [validationError, setValidationError] = useState("")
 
-    const onSubmit = (evt) => {
+    const handleSubmit = evt => {
         evt.preventDefault()
+        setValidationError('')
 
-        try {
-            validateEmail(subscriptionEmail)
-            subscribeEmail(subscriptionEmail)
-        } catch(e) {
-            setValidationError(e.message)
+        const error = validateEmail(subscriptionEmail)
+        if (error) {
+            setValidationError(error)
+            return
         }
-        
+
+        subscribeEmail(subscriptionEmail)
     }
+
+    const handleBlur = evt => {
+        const { value } = evt.target;
+    
+        setValidationError('')
+
+        const error = validateEmail(value);
+
+        setValidationError(error)
+    }
+
 
     return (
         <section className="subscription">
             <h3>SUSCRIBETE A MI NEWSLELLETER PARA RECIBIR OFERTAS ESPECIALES</h3>
-            <form onSubmit={onSubmit} >
-                <input 
-                    type="email" 
-                    placeholder="Escribe tu email" 
-                    aria-label="email-input"
-                    value={subscriptionEmail} 
-                    onChange={e => setSubscriptionEmail(e.currentTarget.value)} 
-                />
+            <form onSubmit={handleSubmit}  autoComplete="off" noValidate>
+                <div className="form-group">
+                    <input 
+                        id="email"
+                        type="email" 
+                        className="form-control required"
+                        placeholder="Escribe tu email" 
+                        aria-label="email-input"
+                        value={subscriptionEmail} 
+                        onChange={e => setSubscriptionEmail(e.target.value)} 
+                        onBlur={handleBlur}
+                        name="email"
+                        required
+                    />
+                </div>
                 <small>{validationError}</small>
-                <input 
-                    type="submit" 
-                    value="+" 
-                    alt="Enviar"
-                />
+                <div className="form-group">
+                    <input 
+                        type="submit" 
+                        value="+" 
+                        alt="Enviar"
+                    />
+                </div>
             </form>
         </section>
     )

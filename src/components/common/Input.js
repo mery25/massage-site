@@ -9,6 +9,7 @@ const Input = ({
 	onChange,
 	onFocus,
 	onBlur,
+	divClassName,
 	className,
 	id,
 	name,
@@ -21,7 +22,7 @@ const Input = ({
 	disabled,
 }) => {
 	return (
-		<div className="input-group">
+		<div className={`input-group ${divClassName ? divClassName : ''}`}>
 			<input
 				type={type}
 				placeholder={placeholder}
@@ -47,9 +48,6 @@ Input.propTypes = {
 	onChange: PropTypes.func,
 	onFocus: PropTypes.func,
 	onBlur: PropTypes.func,
-	textStyles: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-	inputStyles: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-	labelStyles: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 	className: PropTypes.string,
 	id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	name: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
@@ -58,7 +56,6 @@ Input.propTypes = {
 	size: PropTypes.number,
 	disabled: PropTypes.bool,
 	errorText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-	errorStyles: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 	error: PropTypes.bool,
 };
 

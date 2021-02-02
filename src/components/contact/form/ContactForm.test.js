@@ -1,8 +1,17 @@
-import { render, screen} from '@testing-library/react'
+import { render, screen, fireEvent} from '@testing-library/react'
 import ContactForm from './ContactForm'
 import React from 'react'
 
 describe("Contact Form", () => {
+
+    const expectInputToUpdateItsValue = (inputPlaceholder, valueToUpdate) => {
+        const input = screen
+            .getByPlaceholderText(inputPlaceholder)
+            .closest('input')
+
+        fireEvent.change(input, { target: { value: valueToUpdate } })
+        expect(input.value).toBe(valueToUpdate)
+    }
 
     test('Should have name, email, phone, schedule and comments input', () => {
         render(<ContactForm />);
@@ -48,5 +57,16 @@ describe("Contact Form", () => {
         preferedSchedule.blur()
         expect(preferedSchedule.type).toBe('text')
 
+    })
+
+    test('Should set inputs values on inputs when change', () => {
+        render(<ContactForm />);
+
+        expectInputToUpdateItsValue('Escribe tu nombre', 'mari')
+        expectInputToUpdateItsValue('Escribe tu email', 'm@gmail.com')
+        expectInputToUpdateItsValue('Escribe tu telefono', '666335566')
+        expectInputToUpdateItsValue('Horario preferente', '09-06-12 09:12:00')
+        expectInputToUpdateItsValue('Escribe un comentario', 'bla bla')
+        
     })
 })

@@ -12,7 +12,7 @@ describe("Subscription Form", () => {
             .closest('input')).toBeInTheDocument()
 
         expect(screen
-            .getByAltText('Enviar')
+            .getByDisplayValue('+')
             .closest('input')).toBeInTheDocument()
     })
 
@@ -46,7 +46,7 @@ describe("Subscription Form", () => {
         })
     
         const submitInput = screen
-            .getByAltText('Enviar')
+            .getByDisplayValue('+')
             .closest('input')
         fireEvent.click(submitInput)
 
@@ -69,7 +69,7 @@ describe("Subscription Form", () => {
         expect(screen.queryByText("Please enter a valid email")).not.toBeInTheDocument()
 
         const submitInput = screen
-            .getByAltText('Enviar')
+            .getByDisplayValue('+')
             .closest('input')
         fireEvent.click(submitInput)
 

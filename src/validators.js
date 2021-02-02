@@ -22,4 +22,8 @@ export const phoneValidation = phone => {
     if (isPhoneValid(phone)) {
         return null;
     }
+    if (phone.trim() === "") {
+        return "Phone is required";
+    }
+    return "Please enter a valid phone";
 }

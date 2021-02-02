@@ -33,4 +33,20 @@ describe("Contact Form", () => {
             .closest('input')).toBeInTheDocument()
     })
 
+    test('Should change input type on the prefered schedule on focus', () => {
+        render(<ContactForm />);
+
+        const preferedSchedule = screen
+            .getByPlaceholderText('Horario preferente')
+            .closest('input')
+
+        expect(preferedSchedule.type).toBe('text')
+
+        preferedSchedule.focus()
+        expect(preferedSchedule.type).toBe('datetime-local')
+
+        preferedSchedule.blur()
+        expect(preferedSchedule.type).toBe('text')
+
+    })
 })

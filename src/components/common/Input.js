@@ -44,7 +44,7 @@ Input.propTypes = {
 	type: PropTypes.string.isRequired,
 	placeholder: PropTypes.string,
 	value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-	onChange: PropTypes.func.isRequired,
+	onChange: PropTypes.func,
 	onFocus: PropTypes.func,
 	onBlur: PropTypes.func,
 	textStyles: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),

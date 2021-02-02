@@ -1,0 +1,81 @@
+import { render, screen, fireEvent} from '@testing-library/react'
+import SubscriptionForm from './SubscriptionForm'
+import React from 'react'
+
+describe("Subscription Form", () => {
+
+    test('Should have an email form', () => {
+        render(<SubscriptionForm />);
+
+        expect(screen
+            .getByPlaceholderText('Escribe tu email')
+            .closest('input')).toBeInTheDocument()
+
+        expect(screen
+            .getByAltText('Enviar')
+            .closest('input')).toBeInTheDocument()
+    })
+
+    test('Should set email on input when change', () => {
+        render(<SubscriptionForm />);
+
+        const emailInput = screen
+            .getByPlaceholderText('Escribe tu email')
+            .closest('input')
+
+        fireEvent.change(emailInput, { target: { value: 'm@gmail.com' } })
+        expect(emailInput.value).toBe('m@gmail.com')
+        
+    })
+
+    test('Should call submit on click submit button', () => {
+        const mockedOnSubscribe = jest.fn()
+        mockedOnSubscribe.mockImplementation(() => null)
+
+        render(<SubscriptionForm 
+            subscribeEmail={mockedOnSubscribe} 
+            validateEmail={jest.fn()} 
+        />)
+    
+        const emailInput = screen
+            .getByPlaceholderText('Escribe tu email')
+            .closest('input')
+
+        fireEvent.change(emailInput, {
+            target: { value: 'm@gmail.com' }
+        })
+    
+        const submitInput = screen
+            .getByAltText('Enviar')
+            .closest('input')
+        fireEvent.click(submitInput)
+
+        expect(mockedOnSubscribe).toBeCalledWith('m@gmail.com')
+        
+    })
+
+    test('Should add error when email validation fails', () => {
+        const mockedValidateEmail = jest.fn()
+        mockedValidateEmail.mockImplementation(() => "Please enter a valid email");
+        render(<SubscriptionForm validateEmail={mockedValidateEmail} />);
+    
+        const emailInput = screen
+            .getByPlaceholderText('Escribe tu email')
+            .closest('input')
+        fireEvent.change(emailInput, {
+            target: { value: 'm@gmail.com' }
+        })
+    
+        expect(screen.queryByText("Please enter a valid email")).not.toBeInTheDocument()
+
+        const submitInput = screen
+            .getByAltText('Enviar')
+            .closest('input')
+        fireEvent.click(submitInput)
+
+        expect(screen.getByText("Please enter a valid email"))
+            .toBeInTheDocument()
+        
+    })
+
+})

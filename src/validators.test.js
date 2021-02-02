@@ -37,5 +37,24 @@ describe("Validations logic", () => {
             validPhone = '0034677453289'
             expect(phoneValidation(validPhone)).toBeNull()
         })
+
+        test('Should return `Phone is required` when phone is empty', () => {
+            let emptyPhone = ' '
+            expect(phoneValidation(emptyPhone)).toBe('Phone is required')
+        })
+
+        test('Should return `Please enter a valid phone` when phone is invalid', () => {
+            let invalidPhone = 'd903'
+            expect(phoneValidation(invalidPhone)).toBe('Please enter a valid phone')
+
+            invalidPhone = '677455678c'
+            expect(phoneValidation(invalidPhone)).toBe('Please enter a valid phone')
+
+            invalidPhone = '0003d44567'
+            expect(phoneValidation(invalidPhone)).toBe('Please enter a valid phone')
+
+            invalidPhone = '0003(44)567'
+            expect(phoneValidation(invalidPhone)).toBe('Please enter a valid phone')
+        })
     })
 })

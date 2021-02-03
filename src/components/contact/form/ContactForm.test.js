@@ -35,7 +35,7 @@ describe("Contact Form", () => {
 
         expect(screen
             .getByPlaceholderText('Escribe un comentario')
-            .closest('input')).toBeInTheDocument()
+            .closest('textarea')).toBeInTheDocument()
         
         expect(screen
             .getByDisplayValue('Enviar')
@@ -59,14 +59,20 @@ describe("Contact Form", () => {
 
     })
 
-    test('Should set inputs values on inputs when change', () => {
+    test('Should set input values on inputs when change', () => {
         render(<ContactForm />);
 
         expectInputToUpdateItsValue('Escribe tu nombre', 'mari')
         expectInputToUpdateItsValue('Escribe tu email', 'm@gmail.com')
         expectInputToUpdateItsValue('Escribe tu telefono', '666335566')
         expectInputToUpdateItsValue('Horario preferente', '09-06-12 09:12:00')
-        expectInputToUpdateItsValue('Escribe un comentario', 'bla bla')
+        const textArea = screen
+            .getByPlaceholderText("Escribe un comentario")
+            .closest('textarea')
+
+        fireEvent.change(textArea, { target: { value: "bla bla" } })
+        expect(textArea.value).toBe("bla bla")
         
     })
+
 })

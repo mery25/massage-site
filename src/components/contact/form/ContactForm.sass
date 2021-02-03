@@ -1,0 +1,32 @@
+.contact-form
+    display: grid
+    grid-template-areas: "name" "phone" "email" "schedule" "comment" "send"
+    grid-template-rows: 1fr 1fr 1fr 1fr 2fr 1fr
+
+    &__name
+        grid-area: name
+
+    &__phone
+        grid-area: phone
+
+    &__email
+        grid-area: email
+
+    &__schedule
+        grid-area: schedule
+
+    &__comment
+        grid-area: comment
+        font-size: 14.5px
+        height: 83px
+        font-family: Arial
+        padding: 7px 5px
+
+    &__submit
+        grid-area: send
+
+@media screen and (min-width: 600px)
+    .contact-form
+        grid-template-areas: ". name phone ." ". email schedule . " ". comment comment ."  ". send . ."
+        grid-column-gap: 1rem
+        grid-template-rows: 1fr 1fr 2fr 1fr

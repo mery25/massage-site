@@ -1,0 +1,27 @@
+.contact
+    padding: 1rem 2rem
+
+    &__title
+        text-align: center
+
+@media screen and ( min-width:  600px)
+
+    .contact
+        display: grid
+        grid-template-areas: "title title" "items form"
+        grid-template-columns: 1fr 1fr
+
+        &__title
+            grid-area: title
+
+        &__items
+            grid-area: items
+
+        &__form
+            grid-area: form
+
+
+            
+
+
+

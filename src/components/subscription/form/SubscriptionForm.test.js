@@ -12,7 +12,7 @@ describe("Subscription Form", () => {
             .closest('input')).toBeInTheDocument()
 
         expect(screen
-            .getByAltText('Enviar')
+            .getByDisplayValue('+')
             .closest('input')).toBeInTheDocument()
     })
 
@@ -46,7 +46,7 @@ describe("Subscription Form", () => {
         })
     
         const submitInput = screen
-            .getByAltText('Enviar')
+            .getByDisplayValue('+')
             .closest('input')
         fireEvent.click(submitInput)
 
@@ -56,7 +56,7 @@ describe("Subscription Form", () => {
 
     test('Should add error when email validation fails', () => {
         const mockedValidateEmail = jest.fn()
-        mockedValidateEmail.mockImplementation(() => "Please enter a valid email");
+        mockedValidateEmail.mockImplementation(() => "Introduce un email válido");
         render(<SubscriptionForm validateEmail={mockedValidateEmail} />);
     
         const emailInput = screen
@@ -66,14 +66,14 @@ describe("Subscription Form", () => {
             target: { value: 'm@gmail.com' }
         })
     
-        expect(screen.queryByText("Please enter a valid email")).not.toBeInTheDocument()
+        expect(screen.queryByText("Introduce un email válido")).not.toBeInTheDocument()
 
         const submitInput = screen
-            .getByAltText('Enviar')
+            .getByDisplayValue('+')
             .closest('input')
         fireEvent.click(submitInput)
 
-        expect(screen.getByText("Please enter a valid email"))
+        expect(screen.getByText("Introduce un email válido"))
             .toBeInTheDocument()
         
     })

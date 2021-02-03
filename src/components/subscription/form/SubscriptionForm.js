@@ -1,5 +1,6 @@
 import React, {useState} from "react"
 import "./SubscriptionForm.sass"
+import Input from "../../common/Input"
 
 const SubscriptionForm = ({validateEmail, subscribeEmail}) => {
 
@@ -31,27 +32,23 @@ const SubscriptionForm = ({validateEmail, subscribeEmail}) => {
 
     return (
         <form className="subscription-form" onSubmit={handleSubmit}  autoComplete="off" noValidate>
-            <div className="subscription-form__input-group">
-                <input 
-                    id="email"
-                    type="email" 
-                    className="form-control required"
-                    placeholder="Escribe tu email" 
-                    value={subscriptionEmail} 
-                    onChange={e => setSubscriptionEmail(e.target.value)} 
-                    onBlur={handleBlur}
-                    name="Email"
-                    required
-                />
-                <small>{validationError}</small>
-            </div>
-            <div className="form-group">
-                <input 
-                    type="submit" 
-                    value="+" 
-                    alt="Enviar"
-                />
-            </div>
+            <Input 
+                id="email"
+                type="email" 
+                className="form-control required"
+                placeholder="Escribe tu email" 
+                value={subscriptionEmail} 
+                onChange={e => setSubscriptionEmail(e.target.value)} 
+                onBlur={handleBlur}
+                name="Email"
+                error={validationError !== ""}
+                errorText={validationError}
+            />
+            <Input 
+                type="submit" 
+                value="+" 
+                name="Enviar"
+            />
         </form>
     )
 }

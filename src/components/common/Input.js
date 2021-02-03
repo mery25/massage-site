@@ -20,6 +20,8 @@ const Input = ({
 	errorText,
 	error,
 	disabled,
+	min,
+	max
 }) => {
 	return (
 		<div className={`input-group ${divClassName ? divClassName : ''}`}>
@@ -35,6 +37,8 @@ const Input = ({
 				name={name}
 				disabled={disabled}
 				minLength={minlength}
+				min={min}
+				max={max}
 			/>
 			<small dangerouslySetInnerHTML={{__html: error ? errorText : null}} />
 		</div>
@@ -53,6 +57,8 @@ Input.propTypes = {
 	name: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	minlength: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	maxlength: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+	min: PropTypes.string,
+	max: PropTypes.string,
 	size: PropTypes.number,
 	disabled: PropTypes.bool,
 	errorText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),

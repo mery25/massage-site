@@ -77,7 +77,6 @@ const ContactForm = ({validateEmail, validatePhone}) => {
     const handleChange = evt => {
         const {name, value} = evt.target
         
-        console.log(`${name} = ${value}`)
         setValues(values =>  { 
             return {
                 ...values,

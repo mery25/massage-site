@@ -99,7 +99,7 @@ const ContactForm = ({validateEmail, validatePhone}) => {
             <Input
                 id="phone"
                 type="tel"
-                placeholder="Escribe tu telefono"
+                placeholder="Escribe tu teléfono"
                 name="phone"
                 divClassName="contact-form__phone"
                 onChange={handleChange}

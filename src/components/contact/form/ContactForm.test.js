@@ -149,7 +149,7 @@ describe("Contact Form", () => {
             nombre: 'mar',
             phone: '677565678',
             email: 'm@gmail.com',
-            preferedSchedule: '06-12-2021T12:23',
+            preferedDateTime: '06-12-2021T12:23',
             comment: 'Este es mi comentario'
         })
         

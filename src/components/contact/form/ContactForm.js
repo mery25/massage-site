@@ -2,7 +2,7 @@ import React, {useState} from "react"
 import Input from "../../common/Input"
 import "./ContactForm.sass"
 
-const ContactForm = ({validateEmail, validatePhone}) => {
+const ContactForm = ({validateEmail, validatePhone, sendContact}) => {
 
     const [preferedScheduleInputType, setPreferedScheduleInputType] = useState('text')
     const [values, setValues] = useState({
@@ -85,8 +85,29 @@ const ContactForm = ({validateEmail, validatePhone}) => {
         })
     }
 
+    const handleSubmit = evt => {
+        evt.preventDefault()
+
+        setValidationError('phone', '')
+        setValidationError('email', '')
+
+        let error = validate('phone', values['phone'])
+        if (error) {
+            setValidationError('phone', error)
+            return
+        }
+        
+        error = validate('email', values['email'])
+        if (error) {
+            setValidationError('email', error)
+            return
+        }
+
+        sendContact(values)
+    }
+
     return (
-        <form className="contact-form" autoComplete="off" noValidate>
+        <form className="contact-form" autoComplete="off" noValidate onSubmit={handleSubmit}>
             <Input
                 id="name"
                 type="text"

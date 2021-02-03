@@ -14,15 +14,15 @@ describe("Validations logic", () => {
             expect(emailValidation(emptyEmail)).toBe('Email is required')
         })
 
-        test('Should return `Please enter a valid email` when email is invalid', () => {
+        test('Should return `Introduce un email válido` when email is invalid', () => {
             let invalidEmail = 'a.gm.c'
-            expect(emailValidation(invalidEmail)).toBe('Please enter a valid email')
+            expect(emailValidation(invalidEmail)).toBe('Introduce un email válido')
 
             invalidEmail = '@gm.c'
-            expect(emailValidation(invalidEmail)).toBe('Please enter a valid email')
+            expect(emailValidation(invalidEmail)).toBe('Introduce un email válido')
 
             invalidEmail = 'mery@'
-            expect(emailValidation(invalidEmail)).toBe('Please enter a valid email')
+            expect(emailValidation(invalidEmail)).toBe('Introduce un email válido')
         })
     })
 
@@ -43,18 +43,18 @@ describe("Validations logic", () => {
             expect(phoneValidation(emptyPhone)).toBe('Phone is required')
         })
 
-        test('Should return `Please enter a valid phone` when phone is invalid', () => {
+        test('Should return `Introduce un teléfono válido` when phone is invalid', () => {
             let invalidPhone = 'd903'
-            expect(phoneValidation(invalidPhone)).toBe('Please enter a valid phone')
+            expect(phoneValidation(invalidPhone)).toBe('Introduce un teléfono válido')
 
             invalidPhone = '677455678c'
-            expect(phoneValidation(invalidPhone)).toBe('Please enter a valid phone')
+            expect(phoneValidation(invalidPhone)).toBe('Introduce un teléfono válido')
 
             invalidPhone = '0003d44567'
-            expect(phoneValidation(invalidPhone)).toBe('Please enter a valid phone')
+            expect(phoneValidation(invalidPhone)).toBe('Introduce un teléfono válido')
 
             invalidPhone = '0003(44)567'
-            expect(phoneValidation(invalidPhone)).toBe('Please enter a valid phone')
+            expect(phoneValidation(invalidPhone)).toBe('Introduce un teléfono válido')
         })
     })
 })

@@ -15,7 +15,7 @@ export const emailValidation = email => {
     if (email.trim() === "") {
         return "Email is required";
     }
-    return "Please enter a valid email";
+    return "Introduce un email válido";
 }
 
 export const phoneValidation = phone => {
@@ -25,5 +25,5 @@ export const phoneValidation = phone => {
     if (phone.trim() === "") {
         return "Phone is required";
     }
-    return "Please enter a valid phone";
+    return "Introduce un teléfono válido";
 }

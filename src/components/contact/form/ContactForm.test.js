@@ -75,4 +75,41 @@ describe("Contact Form", () => {
         
     })
 
+    test('Should validate email and phone when blur', () => {
+        const mockedValidateEmail = jest.fn()
+        mockedValidateEmail.mockImplementation(() => "Introduce un email válido");
+
+        const mockedValidatePhone = jest.fn()
+        mockedValidatePhone.mockImplementation(() => "Introduce un teléfono válido");
+
+        render(<ContactForm validateEmail={mockedValidateEmail} validatePhone={mockedValidatePhone}/>);
+    
+        const emailInput = screen
+            .getByPlaceholderText('Escribe tu email')
+            .closest('input')
+        fireEvent.change(emailInput, {
+            target: { value: '@gmail.com' }
+        })
+        expect(screen.queryByText("Introduce un email válido")).not.toBeInTheDocument()
+    
+        fireEvent.blur(emailInput)
+
+        expect(screen.getByText("Introduce un email válido"))
+            .toBeInTheDocument()
+
+        
+        const phoneInput = screen
+            .getByPlaceholderText('Escribe tu telefono')
+            .closest('input')
+        fireEvent.change(phoneInput, {
+            target: { value: 'a67' }
+        })
+        expect(screen.queryByText("Introduce un teléfono válido")).not.toBeInTheDocument()
+    
+        fireEvent.blur(phoneInput)
+        expect(screen.getByText("Introduce un teléfono válido"))
+            .toBeInTheDocument()
+        
+    })
+
 })

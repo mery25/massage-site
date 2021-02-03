@@ -25,7 +25,7 @@ describe("Contact Form", () => {
             .closest('input')).toBeInTheDocument()
 
         expect(screen
-            .getByPlaceholderText('Escribe tu telefono')
+            .getByPlaceholderText('Escribe tu teléfono')
             .closest('input')).toBeInTheDocument()
 
         expect(screen
@@ -64,7 +64,7 @@ describe("Contact Form", () => {
 
         expectInputToUpdateItsValue('Escribe tu nombre', 'mari')
         expectInputToUpdateItsValue('Escribe tu email', 'm@gmail.com')
-        expectInputToUpdateItsValue('Escribe tu telefono', '666335566')
+        expectInputToUpdateItsValue('Escribe tu teléfono', '666335566')
         expectInputToUpdateItsValue('Horario preferente', '09-06-12 09:12:00')
         const textArea = screen
             .getByPlaceholderText("Escribe un comentario")
@@ -99,7 +99,7 @@ describe("Contact Form", () => {
 
         
         const phoneInput = screen
-            .getByPlaceholderText('Escribe tu telefono')
+            .getByPlaceholderText('Escribe tu teléfono')
             .closest('input')
         fireEvent.change(phoneInput, {
             target: { value: 'a67' }
@@ -109,6 +109,49 @@ describe("Contact Form", () => {
         fireEvent.blur(phoneInput)
         expect(screen.getByText("Introduce un teléfono válido"))
             .toBeInTheDocument()
+        
+    })
+
+    test('Should call submit on click submit button', () => {
+        const mockedOnSubmit = jest.fn()
+        mockedOnSubmit.mockImplementation(() => null)
+
+        render(<ContactForm 
+            subscribeEmail={mockedOnSubmit} 
+            validateEmail={jest.fn()} 
+            validatePhone={jest.fn()}
+        />)
+    
+        fireEvent.change(screen
+            .getByPlaceholderText('Escribe tu nombre'), {
+            target: { value: 'mar' }
+        })
+        fireEvent.change(screen
+            .getByPlaceholderText('Escribe tu email'), {
+            target: { value: 'm@gmail.com' }
+        })
+        fireEvent.change(screen
+            .getByPlaceholderText('Escribe tu teléfono'), {
+            target: { value: '677565678' }
+        })
+        fireEvent.change(screen
+            .getByPlaceholderText('Horario preferente'), {
+            target: { value: '06-12-2021T12:23' }
+        })
+        fireEvent.change(screen
+            .getByPlaceholderText('Escribe un comentario'), {
+            target: { value: 'Este es mi comentario' }
+        })
+        fireEvent.click(screen
+            .getByDisplayValue('Enviar'))
+
+        expect(mockedOnSubmit).toBeCalledWith({
+            nombre: 'mar',
+            phone: '677565678',
+            email: 'm@gmail.com',
+            preferedSchedule: '06-12-2021T12:23',
+            comment: 'Este es mi comentario'
+        })
         
     })
 

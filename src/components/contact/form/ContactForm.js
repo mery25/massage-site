@@ -2,7 +2,8 @@ import React, {useState} from "react"
 import Input from "../../common/Input"
 import "./ContactForm.sass"
 
-const ContactForm = () => {
+const ContactForm = ({validateEmail, validatePhone}) => {
+
     const [preferedScheduleInputType, setPreferedScheduleInputType] = useState('text')
     const [values, setValues] = useState({
         'name': "",
@@ -10,6 +11,10 @@ const ContactForm = () => {
         'phone': "",
         'preferedDateTime': "",
         'comment': ""
+    })
+    const [validationErrors, setValidationErrors] = useState({
+        'email': "",
+        'phone': "",
     })
 
     const minDateTime = () => {
@@ -38,6 +43,35 @@ const ContactForm = () => {
         if (evt.target.value === '') {
             setPreferedScheduleInputType('text')
         }
+    }
+
+    const setValidationError = (name, value) => {
+        setValidationErrors(validationErrors => {
+            return {
+                ...validationErrors,
+                [name]: value
+            }
+        })
+    }
+
+    const validate = (name, value) => {
+        if (name === 'email')
+            return validateEmail(value)
+
+        if (name === 'phone')
+            return validatePhone(value)
+        
+    }
+
+    const handleBlur = evt => {
+        const { name, value } = evt.target;
+    
+        setValidationError(name, '')
+
+        const error = validate(name, value)
+
+        setValidationError(name, error)
+
     }
 
     const handleChange = evt => {
@@ -70,6 +104,9 @@ const ContactForm = () => {
                 name="phone"
                 divClassName="contact-form__phone"
                 onChange={handleChange}
+                errorText={validationErrors['phone']}
+                error={validationErrors['phone'] !== ''}
+                onBlur={handleBlur}
             />
             <Input
                 id="email"
@@ -78,6 +115,9 @@ const ContactForm = () => {
                 name="email"
                 divClassName="contact-form__email"
                 onChange={handleChange}
+                errorText={validationErrors['email']}
+                error={validationErrors['email'] !== ''}
+                onBlur={handleBlur}
             />
             <Input
                 id="preferedDateTime"
@@ -91,13 +131,13 @@ const ContactForm = () => {
                 min={minDateTime()}
                 max={maxDateTime()}
             />
-            <Input
+            <textarea
                 id="comment"
-                type="textarea"
                 placeholder="Escribe un comentario"
                 name="comment"
-                divClassName="contact-form__comment"
+                className="contact-form__comment"
                 onChange={handleChange}
+                wrap="hard"
             />
             <Input
                 type="submit"

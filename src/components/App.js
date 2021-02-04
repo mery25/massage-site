@@ -6,6 +6,7 @@ import Offers from "./offers/Offers"
 import Products from "./products/Products"
 import Subscription from "./subscription/Subscription"
 import Contact from "./contact/Contact"
+import Testimonials from "./testimonials/Testimonials"
 import { emailValidation, phoneValidation } from '../validators'
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Offers />
         <Products />
         <Subscription validateEmail={emailValidation} subscribeEmail={subscribeEmail} />
+        <Testimonials />
         <Contact validateEmail={emailValidation} validatePhone={phoneValidation} sendContact={sendContact}/>
       </main>
     </div>

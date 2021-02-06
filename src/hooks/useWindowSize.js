@@ -6,12 +6,13 @@ const useWindowSize = () => {
   useLayoutEffect(() => {
     const updateSize = () => {
       setSize([window.innerWidth, window.innerHeight])
-      console.log(`Resize  w ${window.innerWidth} - h ${window.innerHeight}`)
     }
+
     window.addEventListener('resize', updateSize)
     updateSize()
     return () => window.removeEventListener('resize', updateSize)
   }, [])
+  
   return size
 }
 

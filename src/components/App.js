@@ -28,8 +28,8 @@ function App() {
         <AboutMe />
         <Massages />
         <Offers />
-{/*         <Products />
- */}        <Subscription validateEmail={emailValidation} subscribeEmail={subscribeEmail} />
+        <Products />
+        <Subscription validateEmail={emailValidation} subscribeEmail={subscribeEmail} />
         <Testimonials />
         <Contact validateEmail={emailValidation} validatePhone={phoneValidation} sendContact={sendContact}/>
       </main>

@@ -8,18 +8,31 @@ const CarouselSlide = ({text, image}) => {
 
     const isPortrait = () => height > width
     const aspectRatioScreen = () => isPortrait() ? height / width : width / height
+    const getDisplayImageAsPortrait = () => height > width || aspectRatioScreen() < ASPECT_RATIO_PICTURE
+    const roundPx = (px) => Math.round((px + Number.EPSILON) * 100) / 100
+    const getStyle = () => {
 
-    const getCommonStyle = () => {
-        return { bottom: "0", left: '0'}
-    } 
+        if (getDisplayImageAsPortrait()) {
+            const widthImage = height * ASPECT_RATIO_PICTURE
+            const pxToTranslateToLeft = (widthImage - width) / 2 * -1
+            const roundedPx = roundPx(pxToTranslateToLeft)
+            return { bottom: "0", left: roundedPx + "px"}
+        }
+
+        const heightImage = width / ASPECT_RATIO_PICTURE
+        const pxToTranslateToBottom = (heightImage - height) / 2 * -1
+        const roundedPx = roundPx(pxToTranslateToBottom)
+        return { bottom: roundedPx +"px", left: "0"}
+
+    }
 
     const {src, alt} = image
-    
+
     return (
-        <div className="carousel-slide"> {console.log("isPortrait => " + (isPortrait()? "portrait":"landscape") + " aspectratio=> " + aspectRatioScreen())}
+        <div className="carousel-slide">
             <img                
-                style = {getCommonStyle()}
-                className={(isPortrait() || aspectRatioScreen() < ASPECT_RATIO_PICTURE) ? "carousel-slide__image--portrait" : "carousel-slide__image--landscape"} 
+                style = {getStyle()}
+                className={getDisplayImageAsPortrait() ? "carousel-slide__image--portrait" : "carousel-slide__image--landscape"} 
                 src={src} 
                 alt={alt}
             />

@@ -2,7 +2,7 @@ import React from "react"
 import "./CarouselSlide.sass"
 import useWindowSize from "../../../hooks/useWindowSize"
 
-const CarouselSlide = ({text, image}) => {
+const CarouselSlide = ({title, text, link, image}) => {
     const ASPECT_RATIO_PICTURE = 1.5
     const [width, height] = useWindowSize()
 
@@ -27,6 +27,7 @@ const CarouselSlide = ({text, image}) => {
     }
 
     const {src, alt} = image
+    const {href, label} = link
 
     return (
         <div className="carousel-slide">
@@ -37,9 +38,11 @@ const CarouselSlide = ({text, image}) => {
                 alt={alt}
             />
             <div className="legend">
+                <h2 className="carousel-slide__title">{title}</h2>
                 <p className="carousel-slide__text">                        
                     {text}           
                 </p>
+                <a className="carousel-slide__link" href={href}>{label}</a>
             </div>
         </div>
     )

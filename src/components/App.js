@@ -1,4 +1,5 @@
 import './App.sass';
+import Header from "./header/Header"
 import NavBar from "./navbar/NavBar"
 import AboutMe from "./aboutme/AboutMe"
 import Massages from "./massages/Massages"
@@ -21,6 +22,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       <NavBar />
       <main>
         <AboutMe />

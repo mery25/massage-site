@@ -38,7 +38,7 @@ const Header = () => {
                 showArrows={true} 
                 showStatus={false} 
                 showThumbs={false}
-             /*    autoPlay={true} */
+                 autoPlay={true}
                 infiniteLoop={true}
                 interval={30000}
             >

@@ -1,5 +1,5 @@
 import React from "react"
-import lotus from "../../assets/purple-lotus.png"
+import lotus from "../../assets/images/purple-lotus.png"
 import "./Divider.sass"
 
 const Divider = () => {

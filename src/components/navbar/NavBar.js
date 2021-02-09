@@ -13,7 +13,7 @@ const NavBar = () => {
         spy: true,
         smooth: true,
         duration: 500,
-        offset: -80
+        offset: -60
     }
 
     const {spy, smooth, duration, offset} = navBarScrollConfig

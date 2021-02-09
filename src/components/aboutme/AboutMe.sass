@@ -1,8 +1,22 @@
-#aboutme
-    padding: 2rem 5rem
-    background: pink
+$bg_section_aboutme: #bb17b603
+.aboutme
+    color: #9a4985
+    background: $bg_section_aboutme
+    height: fit-content
 
-    h2
-        text-align: center
-    p
-        text-align: center
+    &__content
+        margin: 2rem 0
+        position: relative
+        overflow: auto
+
+    &__image
+        float: left
+        margin: 0 2rem 2rem 2rem
+        height: auto
+        max-width: 80%
+        box-shadow: 0 4px 8px 0 rgba(#9a4985, 0.2), 0 6px 20px 0 rgba(#9a4985, 0.19)
+
+
+@media screen and ( min-width: 600px )
+    .aboutme__image
+        max-width: 40%

@@ -1,54 +1,44 @@
 import { render, screen } from '@testing-library/react';
 import NavBar from './NavBar';
 import React from 'react';
-import { MemoryRouter } from 'react-router';
 
 describe("NavBar", () => {
 
     const expectedLinks = [
-        { text: 'Inicio', path: "/home"},
-        { text: 'Sobre mi', path: "/aboutme"},
-        { text: 'Masajes', path: "/massages"},
-        { text: 'Tarifas', path: "/prices"},
-        { text: 'Oferta', path: "/offer"},
-        { text: 'Contacto', path: "/contact"},
-
+        'Inicio',
+        'Sobre mi',
+        'Masajes',
+        'Testimonios',
+        'Tarifas',
+        'Ofertas',
+        'Contacto'
     ]
 
     test('Should have expected links', () => {
-        render(
-            <MemoryRouter>
-                <NavBar />
-            </MemoryRouter>);
+        render(<NavBar />)
 
         expectedLinks.forEach(link => {
             expect(screen
-                .getByText(link.text)
+                .getByText(link)
                 .closest('a'))
-                .toHaveAttribute('href', link.path)
+                .toBeInTheDocument()
         })
 
 
     })
 
     test('Should have logo link', () => {
-        render(
-            <MemoryRouter>
-                <NavBar />
-            </MemoryRouter>);
+        render(<NavBar />)
 
         expect(screen
             .getByAltText('Logo')
             .closest('a'))
-            .toHaveAttribute('href', "/home")
+            .toBeInTheDocument()
 
     })
 
     test('Should collapse navbar', () => {
-        render(
-            <MemoryRouter>
-                <NavBar/>
-            </MemoryRouter>);
+        render(<NavBar />)
 
         const input = screen.getByTestId('toggle-nav-input')
         const nav = screen.getByTestId('navbar-nav')
@@ -56,12 +46,12 @@ describe("NavBar", () => {
         // Toggle checkbox
         input.click()
         // Nav should not have collapsed class (by default is collapsed)
-        expect(nav.classList.contains('collapsed')).toBe(false)
+        expect(nav.classList.contains('navbar__nav--collapsed')).toBe(false)
 
        // Toggle checkbox
        input.click()
        // Nav should have collapsed class
-       expect(nav.classList.contains('collapsed')).toBe(true)
+       expect(nav.classList.contains('navbar__nav--collapsed')).toBe(true)
 
     })
 })

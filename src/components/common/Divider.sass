@@ -1,0 +1,44 @@
+$divider-color: #9a4985
+
+.divider
+    display: table
+    font-size: 20px
+    text-align: center
+    width: 90%				/* divider width */
+    margin: 0 auto 1rem			/* spacing above/below */
+
+    & span
+        display: table-cell
+        position: relative
+
+        &:first-child, &:last-child 
+            width: 50%
+            top: 13px					/* adjust vertical align */
+            -moz-background-size: 100% 2px	/* line width */
+            background-size: 100% 2px 			/* line width */
+            background-position: 0 0, 0 100%
+            background-repeat: no-repeat
+
+        &:first-child 				/* color changes in here */
+            background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), to($divider-color))
+            background-image: -webkit-linear-gradient(180deg, transparent, $divider-color)
+            background-image: -moz-linear-gradient(180deg, transparent, $divider-color)
+            background-image: -o-linear-gradient(180deg, transparent,$divider-color)
+            background-image: linear-gradient(90deg, transparent, $divider-color)
+
+        &:nth-child(2) 
+            color:$divider-color 
+            padding: 0px 5px 
+            width: auto 
+            white-space: nowrap
+
+        &:last-child 				/* color changes in here */
+            background-image: -webkit-gradient(linear, 0 0, 0 100%, from($divider-color), to(transparent))
+            background-image: -webkit-linear-gradient(180deg,$divider-color, transparent)
+            background-image: -moz-linear-gradient(180deg, $divider-color, transparent)
+            background-image: -o-linear-gradient(180deg,$divider-color, transparent)
+            background-image: linear-gradient(90deg, $divider-color, transparent)
+
+    &__image img
+        width: 1.5rem
+        height: 1rem

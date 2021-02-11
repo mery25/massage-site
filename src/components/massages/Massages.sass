@@ -1,16 +1,19 @@
+@import "../fonts"
+@import "../colors"
+
 .massages
     display: flex
     flex-direction: column
     align-items: center
-    padding: 2rem 3rem
+    color: $color-title-massages
 
     &__tab-panel
         display: flex
-        background-color: black
-        color: white
+        color: $font-tab-massages
 
-    &__tab
-        padding: 8px 16px
+    &__tab,
+    &__tab--active
+        padding: 13px 16px
         width: auto
         border: none
         display: block
@@ -21,10 +24,23 @@
         background-color: inherit
         text-align: center
         cursor: pointer
+        background: $bg-tab-massages
+        text-transform: uppercase
+        font: $font-button
     
+    &__tab--active, &__tab:hover
+        background: $bg-tab-active-massages
+
     &__tab-content
-        border: 1px solid black
+        position: relative
+        display: block
         margin: 2rem
-        background: grey
-        height: 404px
-        width: 100%
+        width: 80vw
+        box-shadow: 0 0 15px $shdw-tab-content-massages
+        padding: 1rem
+        overflow: hidden
+        height: 36rem
+
+@media screen and ( min-width: 600px )
+    .massages__tab-content
+        height: 23rem

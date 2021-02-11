@@ -1,25 +1,74 @@
+@import "../../colors"
+@import "../../fonts"
+
+$enter-transition: ease-in
+$leave-transition: linear
+$transition-time: 1000ms
 .massage
-    width: 100%
+    width: 80vw
     display: grid
-    grid-template-areas: "title" "photo" "description" "features"
-    grid-column-gap: 2rem
-
-    &__name
-        grid-area: title
-        text-align: center
-
-    &__image
-        grid-area: photo
+    grid-template-areas: "image" "description"
+    margin: auto 0
+    position: absolute
 
     &__description
         grid-area: description
 
-    &__features
-        grid-area: features
+    &__name
+        grid-area: image
+        text-align: center
+        @include font-heading()
 
+    &__image
+        margin: 0 2rem
+        height: auto
+        max-width: 80%
+        box-shadow: 0 4px 8px 0 rgba($shdw-image-massage, 0.2), 0 6px 20px 0 rgba(#9a4985, 0.19)
+
+    &.left.slide
+        
+        &-enter
+            left: -90%
+            transition: all  $transition-time $enter-transition
+
+        &.enter-active
+            left: 0
+            transition: all $transition-time $enter-transition
+
+        &-leave 
+            left: 0
+            transition: all $transition-time $leave-transition
+
+        &-leave-active
+            left: -90%
+            transition: all $transition-time $leave-transition
+
+    &.right.slide
+        
+        &-enter
+            left: 90%
+            transition: all $transition-time $enter-transition
+
+        &.enter-active
+            left: 0
+            transition: all $transition-time $enter-transition
+
+        &-leave 
+            left: 0
+            transition: all $transition-time $leave-transition
+
+        &-leave-active
+            left: 90%
+            transition: all $transition-time $leave-transition
 
 @media screen and (min-width: 600px)
     .massage
-        grid-template-areas: ". title title ." ". photo description ." ". photo features ."
-        grid-template-columns: .5rem 1fr 1fr .5rem
-        grid-template-rows: auto
+        grid-template-areas: "image description"
+        &__name
+            margin-bottom: 2rem
+            text-align: start
+        &__image
+            margin: 0 4rem 2rem 1rem
+            max-width: 30vw
+
+    

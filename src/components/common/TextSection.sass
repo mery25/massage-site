@@ -2,4 +2,8 @@
     
 .text-section
     text-align: center
-    font: $font-body
+    @include font-body()
+
+@media screen and ( min-width: 600px )
+    .text-section
+        text-align: start

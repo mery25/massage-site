@@ -1,21 +1,35 @@
+@import "../../colors"
+@import "../../fonts"
+
 .product
     display: grid
     grid-template-areas: "name price" "description description" "features features"
     grid-template-columns: 1fr 3rem
-    margin-bottom: 1rem
-    margin-left: 1.5rem
-    margin-right: 1.5rem
+    margin: 1rem 1.5rem 1rem 1.5rem
+    grid-column-gap: .5rem
+    @include font-body
 
     &__title
         grid-area: name
+        margin-top: 0px
+        margin-bottom: 0px
+        margin-inline-start: 1.6rem
     
     &__price-amount
         grid-area: price
         vertical-align: middle
         text-align: center
-        border: 1px solid black
+        background-color: $bg-price-product
+        color: $white
         line-height: 2.5rem
         max-height: 2.5rem
+        transition-duration: 300ms
+    &__price-amount:hover
+        transform: scale(1.1, 1.1)
 
     &__features
         grid-area: features
+
+@media screen and (min-width: 768px)
+    .product
+        max-width: 28%

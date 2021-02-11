@@ -1,6 +1,7 @@
 import React from "react"
 import "./Products.sass"
 import Product from "./product/Product"
+import {ScrollSection, Head} from "../common"
 
 const Products = () => {
 
@@ -35,8 +36,8 @@ const Products = () => {
     ]
 
     return (
-        <section className="products">
-            <h2 className="products__title">Servicios</h2>
+        <ScrollSection className="products">
+            <Head title="Tarifas" />
             <div className="products__container">
                 {
                     products.map(product => 
@@ -47,7 +48,7 @@ const Products = () => {
                         />)
                 }
             </div>
-        </section>
+        </ScrollSection>
     )
 }
 

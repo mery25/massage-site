@@ -8,3 +8,17 @@ $font-lato: Lato sans-serif
 $font-heading: normal 1.5em $font-taviraj
 $font-body: normal 1em $font-lato
 $font-button: bold 13px $font-lato
+
+@mixin font($font-family, $font-size, $font-weight)
+    font-family: $font-family
+    font-size: $font-size
+    font-weight: $font-weight
+
+@mixin font-heading($font-size: 1.5em, $font-weight: 400)
+    @include font($font-taviraj, $font-size, $font-weight)
+
+@mixin font-body($font-size: 1em, $font-weight: 300)
+    @include font($font-lato, $font-size, $font-weight)
+
+@mixin font-button($font-size: 13px, $font-weight: 700)
+    @include font($font-lato, $font-size, $font-weight)

@@ -1,3 +1,19 @@
+@import "../../colors"
+@import "../../fonts"
+
 .contact-items
     list-style: none
     padding-inline-start: 0
+    padding-left: 2rem
+    @include font-body
+
+    &__map
+        margin-left: -1rem
+        max-width: 20rem
+        height: 10rem
+
+    &__link
+        color: $font-body-contact
+        text-decoration: none
+    &__link:hover
+        color: lighten($font-body-contact, 50%)

@@ -1,10 +1,10 @@
 import React from "react"
 import "./IFrame.sass"
 
-const IFrame = ({source, width, height}) => {
+const IFrame = ({className, title, source, width, height}) => {
     return (
-        <div className="iframe-container">       
-            <iframe className="iframe"
+        <div className={className ? `iframe-container ${className}`: "iframe-container"}>       
+            <iframe title={title} className="iframe"
                 src={source} 
             />         
         </div>

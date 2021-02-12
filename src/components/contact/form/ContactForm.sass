@@ -1,7 +1,17 @@
+@import "../../colors"
 .contact-form
     display: grid
-    grid-template-areas: "name" "phone" "email" "schedule" "comment" "send"
-    grid-template-rows: 1fr 1fr 1fr 1fr 2fr 1fr
+    grid-template-areas: "title" "name" "phone" "email" "schedule" "comment" "send"
+    grid-template-rows: minmax(1fr, 50px) 1fr 1fr 1fr 1fr 2fr 1fr
+    box-shadow: 0 4px 8px 0 rgba($shdw-image-massage, 0.2), 0 6px 20px 0 rgba($shdw-image-massage, 0.19)
+    padding: 1rem 2rem
+    margin: 1rem 0
+    grid-column-gap: 1rem
+    max-width: 38rem
+    flex-grow: 2
+
+    &__title
+        grid-area: title
 
     &__name
         grid-area: name
@@ -19,14 +29,24 @@
         grid-area: comment
         font-size: 14.5px
         height: 83px
-        font-family: Arial
+        font-family: 'Roboto', Open sans, Arial
+        font-size: 14px
+        font-weight: 300
+        font: inherit
         padding: 7px 5px
+        background-color: #fbfbfb
+        border: 1px solid rgba($black, 0.1)
+        padding: 0.5em 1em
+        margin-bottom: 1.5em
+
+        &:focus
+            outline: none !important
+            background-color: white
 
     &__submit
         grid-area: send
 
-@media screen and (min-width: 600px)
+@media screen and (min-width: 768px)
     .contact-form
-        grid-template-areas: ". name phone ." ". email schedule . " ". comment comment ."  ". send . ."
-        grid-column-gap: 1rem
-        grid-template-rows: 1fr 1fr 2fr 1fr
+        margin-right: 6vw
+        margin-left: auto

@@ -108,6 +108,7 @@ const ContactForm = ({validateEmail, validatePhone, sendContact}) => {
 
     return (
         <form className="contact-form" autoComplete="off" noValidate onSubmit={handleSubmit}>
+            <p className="contact-form__title">Rellena éste formulario para pedir cita.</p>
             <Input
                 id="name"
                 type="text"

@@ -1,4 +1,5 @@
 @import "../../colors"
+@import "../../fonts"
 .contact-form
     display: grid
     grid-template-areas: "title" "name" "phone" "email" "schedule" "comment" "send"
@@ -12,6 +13,7 @@
 
     &__title
         grid-area: title
+        @include font-body
 
     &__name
         grid-area: name
@@ -29,19 +31,16 @@
         grid-area: comment
         font-size: 14.5px
         height: 83px
-        font-family: 'Roboto', Open sans, Arial
-        font-size: 14px
-        font-weight: 300
-        font: inherit
+        @include font-button
         padding: 7px 5px
-        background-color: #fbfbfb
+        background-color: $bg-input
         border: 1px solid rgba($black, 0.1)
         padding: 0.5em 1em
         margin-bottom: 1.5em
 
         &:focus
             outline: none !important
-            background-color: white
+            background-color: $bg-focus-input
 
     &__submit
         grid-area: send

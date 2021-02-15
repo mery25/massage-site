@@ -2,7 +2,7 @@
 @import "../../fonts"
 .contact-form
     display: grid
-    grid-template-areas: "title" "name" "phone" "email" "schedule" "comment" "send"
+    grid-template-areas: "title title" "name name" "phone phone" "email email" "schedule schedule" "comment comment" "send notification"
     grid-template-rows: minmax(1fr, 50px) 1fr 1fr 1fr 1fr 2fr 1fr
     box-shadow: 0 4px 8px 0 rgba($shdw-image-massage, 0.2), 0 6px 20px 0 rgba($shdw-image-massage, 0.19)
     padding: 1rem 2rem
@@ -10,6 +10,7 @@
     grid-column-gap: 1rem
     max-width: 38rem
     flex-grow: 2
+    overflow: hidden
 
     &__title
         grid-area: title
@@ -44,6 +45,8 @@
 
     &__submit
         grid-area: send
+    &__notification
+        grid-area: notification
 
 @media screen and (min-width: 768px)
     .contact-form

@@ -1,4 +1,15 @@
+@import "../../colors"
+@import "../../fonts"
+
 .contact-item
+    padding: .6rem
+    transition-duration: 300ms
+    @include font-body()
+
     &__icon
         margin-right: 1rem
-        margin-left: .5rem
+        margin-left: -2rem
+        color: $font-icon-item-contact
+
+    &:hover
+        transform: translateX(0.5rem)

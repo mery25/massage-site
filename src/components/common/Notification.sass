@@ -1,0 +1,57 @@
+@import "../colors"
+@import "../fonts"
+
+.notification
+    box-sizing: border-box
+    padding: 15px 15px 15px 58px
+    border-radius: 2px
+    color: $color-notification
+    background-color: $bg-default-notification
+    box-shadow: 0 0 12px $shdw-notification
+    font-size: 1em
+    line-height: 1.2em
+    position: relative
+    opacity: 0.9
+    width: fit-content
+
+    &:before
+        position: absolute
+        top: 50%
+        left: 15px
+        margin-top: -14px
+        display: block
+        font: $font-notification
+        width: 28px
+        height: 28px
+        text-align: center
+        line-height: 28px
+
+    &.success
+        background-color: $bg-success-notification
+
+    &.success:before
+        content: "✔"
+        border: 2px solid lighten($bg-success-notification, 50%)
+        border-radius: 5px
+
+    &.error
+        background-color: $bg-error-notification
+
+    &.error:before
+        content: "✘"
+        border: 2px solid lighten($bg-error-notification, 40%)
+        border-radius: 5px
+
+    &-enter
+        opacity: 0
+
+        &.notification-enter-active
+            opacity: 1
+            transition: all 0.4s
+
+    &-leave
+        opacity: 1
+
+        &.notification-leave-active
+            opacity: 0
+            transition: all 0.4s

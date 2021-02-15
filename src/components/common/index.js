@@ -5,7 +5,7 @@ import IFrame from "./IFrame"
 import Input from "./Input"
 import TextSection from "./TextSection"
 import List from "./List"
-
+import Notification from "./Notification"
 export {
     ScrollSection,
     Head,
@@ -13,5 +13,6 @@ export {
     IFrame,
     Input,
     TextSection,
-    List
+    List,
+    Notification
 }

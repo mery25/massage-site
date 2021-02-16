@@ -1,12 +1,33 @@
+@import "../colors"
+@import "../fonts"
+
 .offer
-    padding: 2rem 5rem
-    background: pink
+    background: $bg-offers
+    color: $color-offers
 
     &__title
         text-align: center
 
     &__description
-        text-align: center
-        
+        text-align: justify
+        width: fit-content
+        display: flex
+        justify-content: center
+        margin: -.7rem auto 1rem auto
+        align-items: center
+        @include font-body
+
         .highlighted
             font-weight: bold
+            background-color: $bg-highlighted-offers
+            border-radius: 50%
+            padding: .9rem .4rem
+            font-size: 1.8rem
+            margin-right: .75rem
+            float: left
+            margin-top: -1rem
+
+@media screen and ( min-width: 600px )
+
+    .offer__description .highlighted
+        margin-top: -2rem

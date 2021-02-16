@@ -1,12 +1,13 @@
 import React from "react"
 import "./Offers.sass"
+import {Head, ScrollSection} from "../common"
 
 const Offers = ()=> {
     return (
-        <section className="offer">
-            <h2 className="offer__title">Oferta especial</h2>
+        <ScrollSection name="offer" id="offer" className="offer">
+            <Head title="Oferta especial"/>
             <p className="offer__description"><span className="highlighted">50%</span> de descuento en un masaje por traer un amigo o familiar</p>
-        </section>
+        </ScrollSection>
     )
 }
 

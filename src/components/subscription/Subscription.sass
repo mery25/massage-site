@@ -1,11 +1,19 @@
+@import "../colors"
+@import "../fonts"
+
 .subscription
     display: flex
     flex-direction: column
     align-items: center
-    background-color: pink
+    background-color: $cannon-pink
+    color: $color-subscription
     padding: 1rem 2rem
+    @include font-body
 
-@media screen and (min-width: 600px)
+    &__title
+        margin: 0
+
+@media screen and (min-width: 768px)
 
     .subscription
         flex-direction: row

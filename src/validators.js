@@ -13,7 +13,7 @@ export const emailValidation = email => {
         return null;
     }
     if (email.trim() === "") {
-        return "Email is required";
+        return "Email obligatorio";
     }
     return "Introduce un email válido";
 }
@@ -23,7 +23,7 @@ export const phoneValidation = phone => {
         return null;
     }
     if (phone.trim() === "") {
-        return "Phone is required";
+        return "Teléfono obligatorio";
     }
     return "Introduce un teléfono válido";
 }

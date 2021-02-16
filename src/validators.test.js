@@ -9,9 +9,9 @@ describe("Validations logic", () => {
             expect(emailValidation(validEmail)).toBeNull()
         })
 
-        test('Should return `Email is required` when email is empty', () => {
+        test('Should return `Email obligatorio` when email is empty', () => {
             let emptyEmail = ' '
-            expect(emailValidation(emptyEmail)).toBe('Email is required')
+            expect(emailValidation(emptyEmail)).toBe('Email obligatorio')
         })
 
         test('Should return `Introduce un email válido` when email is invalid', () => {
@@ -38,9 +38,9 @@ describe("Validations logic", () => {
             expect(phoneValidation(validPhone)).toBeNull()
         })
 
-        test('Should return `Phone is required` when phone is empty', () => {
+        test('Should return `Teléfono obligatorio` when phone is empty', () => {
             let emptyPhone = ' '
-            expect(phoneValidation(emptyPhone)).toBe('Phone is required')
+            expect(phoneValidation(emptyPhone)).toBe('Teléfono obligatorio')
         })
 
         test('Should return `Introduce un teléfono válido` when phone is invalid', () => {

@@ -7,7 +7,7 @@ const Subscription = ({validateEmail, subscribeEmail}) => {
 
     return (
         <ScrollSection id="subscription" name="subscription" className="subscription">
-            <h3 className="subscription__title">SUSCRIBETE A MI NEWSLELLETER PARA RECIBIR OFERTAS ESPECIALES</h3>
+            <h3 className="subscription__title">SUSCRIBETE A MI NEWSLETTER PARA RECIBIR OFERTAS ESPECIALES</h3>
             <SubscriptionForm validateEmail={validateEmail} subscribeEmail={subscribeEmail}/>
         </ScrollSection>
     )
